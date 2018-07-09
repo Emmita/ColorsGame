@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context=".GameModeOne">
+
+    <TextView
+        android:id="@+id/colorName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="@string/negro"
+        tools:textColor="@color/azul"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/linear_layout"
+        android:textSize="50sp"
+        android:layout_marginBottom="20dp"/>
+
+    <LinearLayout
+        android:id="@+id/linear_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerInParent="true">
+
+        <at.markushi.ui.CircleButton
+            android:id="@+id/true_button"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:cb_color="@color/negro"
+            app:cb_pressedRingWidth="25dp"/>
+
+        <at.markushi.ui.CircleButton
+            android:id="@+id/false_button"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:cb_color="@color/azul"
+            app:cb_pressedRingWidth="25dp"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
