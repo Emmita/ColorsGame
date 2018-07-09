@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Colors Game</string>
+    <string name="amarillo">AMARILLO</string>
+    <string name="azul">AZUL</string>
+    <string name="naranja">NARANJA</string>
+    <string name="negro">NEGRO</string>
+    <string name="rojo">ROJO</string>
+    <string name="verde">VERDE</string>
 </resources>
