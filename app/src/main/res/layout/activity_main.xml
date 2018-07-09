@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,10 +9,33 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Selecciona el modo de juego"
+        android:layout_centerHorizontal="true"
+        android:textSize="16sp"
+        android:textColor="#000"
+        android:layout_above="@id/linear_layout"
+        android:layout_marginBottom="20dp"/>
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/linear_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_mode_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mode 1" />
+
+        <Button
+            android:id="@+id/btn_mode_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mode 2" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>
