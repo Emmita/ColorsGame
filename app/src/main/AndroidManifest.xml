@@ -18,10 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GameModeOne"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".GameModeTwo"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".GameModeOne"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".GameModeTwo"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
