@@ -1,10 +1,13 @@
 package com.emmita.colorsgame;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,9 +19,17 @@ import at.markushi.ui.CircleButton;
 
 public class GameModeOne extends AppCompatActivity {
 
+    private ProgressBar mProgressBar;
     private TextView mColorTextView;
     private CircleButton mTrueButton;
     private CircleButton mFalseButton;
+    private TextView mRecord;
+    private TextView mScore;
+
+    private Handler mHandler = new Handler();
+    private Preferences mPreferences;
+    private String record;
+    private int i = 199;
 
     private Color[] mColors = new Color[]{
 
@@ -44,9 +55,19 @@ public class GameModeOne extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_mode_one);
 
+        mPreferences = new Preferences(GameModeOne.this);
+        record = mPreferences.getRecord();
+
+        initProgress();
+
         mColorTextView = (TextView) findViewById(R.id.colorName);
         mTrueButton = (CircleButton) findViewById(R.id.true_button);
         mFalseButton = (CircleButton) findViewById(R.id.false_button);
+        mRecord = (TextView) findViewById(R.id.record);
+        mScore = (TextView) findViewById(R.id.score);
+        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
+
+        mRecord.setText(record);
 
         mTrueButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,7 +97,7 @@ public class GameModeOne extends AppCompatActivity {
 
     }
 
-    private void updateColor(){
+    private void updateColor() {
 
         int colorName = mColors[mCurrentIndex].getColorName();
         int color = mColors[mCurrentIndex].getTextColor();
@@ -88,17 +109,70 @@ public class GameModeOne extends AppCompatActivity {
         mTrueButton.setColor(getResources().getColor(buttonTrueColor));
         mFalseButton.setColor(getResources().getColor(buttonFalseButton));
 
+        i = 199;
+        initProgress();
+
     }
 
-    private void checkAnswer(boolean userPressedTrue){
+    private void checkAnswer(boolean userPressedTrue) {
+
+        int currentRecord = Integer.parseInt(mPreferences.getRecord());
+
+        String score = mScore.getText().toString();
+        int currentScore = Integer.parseInt(score);
 
         boolean answer = mColors[mCurrentIndex].isAnswerTrue();
 
-        if (userPressedTrue == answer){
-            Toast.makeText(this, "Correcto", Toast.LENGTH_SHORT).show();
-        }else {
+        if (userPressedTrue == answer) {
+
+            currentScore += 10;
+
+            if (currentScore > currentRecord) {
+
+                mPreferences.setRecord(String.valueOf(currentScore));
+
+            }
+
+            mScore.setText(String.valueOf(currentScore));
+
+            mProgressBar.setProgress(100);
+            i = 199;
+            initProgress();
+
+        } else {
             Toast.makeText(this, "Incorrecto", Toast.LENGTH_SHORT).show();
         }
+
+    }
+
+    private void initProgress() {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                while (i < 200 && i > 0) {
+                    i -= 1;
+
+                    mHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            mProgressBar.setProgress(i);
+
+                        }
+                    });
+
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+
+            }
+        }).start();
 
     }
 
