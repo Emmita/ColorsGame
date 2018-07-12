@@ -33,18 +33,18 @@ public class GameModeOne extends AppCompatActivity {
 
     private Color[] mColors = new Color[]{
 
-            new Color(R.string.negro, R.color.azul, true, R.color.azul, R.color.negro),
-            new Color(R.string.negro, R.color.azul, false, R.color.negro, R.color.azul),
-            new Color(R.string.amarillo, R.color.negro, true, R.color.negro, R.color.amarillo),
-            new Color(R.string.amarillo, R.color.negro, false, R.color.amarillo, R.color.negro),
-            new Color(R.string.azul, R.color.amarillo, true, R.color.amarillo, R.color.azul),
-            new Color(R.string.azul, R.color.amarillo, false, R.color.azul, R.color.amarillo),
-            new Color(R.string.naranja, R.color.verde, true, R.color.verde, R.color.naranja),
-            new Color(R.string.naranja, R.color.verde, false, R.color.naranja, R.color.verde),
-            new Color(R.string.rojo, R.color.naranja, true, R.color.naranja, R.color.rojo),
-            new Color(R.string.rojo, R.color.naranja, false, R.color.rojo, R.color.naranja),
-            new Color(R.string.verde, R.color.rojo, true, R.color.rojo, R.color.verde),
-            new Color(R.string.verde, R.color.rojo, false, R.color.verde, R.color.rojo)
+            new Color(R.string.negro, R.color.azul, false, R.color.azul, R.color.negro),
+            new Color(R.string.negro, R.color.azul, true, R.color.negro, R.color.azul),
+            new Color(R.string.amarillo, R.color.negro, false, R.color.negro, R.color.amarillo),
+            new Color(R.string.amarillo, R.color.negro, true, R.color.amarillo, R.color.negro),
+            new Color(R.string.azul, R.color.amarillo, false, R.color.amarillo, R.color.azul),
+            new Color(R.string.azul, R.color.amarillo, true, R.color.azul, R.color.amarillo),
+            new Color(R.string.naranja, R.color.verde, false, R.color.verde, R.color.naranja),
+            new Color(R.string.naranja, R.color.verde, true, R.color.naranja, R.color.verde),
+            new Color(R.string.rojo, R.color.naranja, false, R.color.naranja, R.color.rojo),
+            new Color(R.string.rojo, R.color.naranja, true, R.color.rojo, R.color.naranja),
+            new Color(R.string.verde, R.color.rojo, false, R.color.rojo, R.color.verde),
+            new Color(R.string.verde, R.color.rojo, true, R.color.verde, R.color.rojo)
 
     };
 
@@ -116,7 +116,7 @@ public class GameModeOne extends AppCompatActivity {
 
     private void checkAnswer(boolean userPressedTrue) {
 
-        int currentRecord = Integer.parseInt(mPreferences.getRecord());
+        int currentRecord = Integer.parseInt(record);
 
         String score = mScore.getText().toString();
         int currentScore = Integer.parseInt(score);
@@ -135,7 +135,7 @@ public class GameModeOne extends AppCompatActivity {
 
             mScore.setText(String.valueOf(currentScore));
 
-            mProgressBar.setProgress(100);
+            mProgressBar.setProgress(200);
             i = 199;
             initProgress();
 
@@ -164,7 +164,7 @@ public class GameModeOne extends AppCompatActivity {
                     });
 
                     try {
-                        Thread.sleep(100);
+                        Thread.sleep(200);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
